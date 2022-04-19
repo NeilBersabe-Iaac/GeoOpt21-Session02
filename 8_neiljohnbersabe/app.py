@@ -31,9 +31,9 @@ hops = hs.Hops(app)
     hs.HopsPoint("MidPoints2","M2","Mid Points 2",hs.HopsParamAccess.LIST),
     hs.HopsPoint("TopPoints","T","Top Points",hs.HopsParamAccess.LIST)
 
-    ,hs.HopsCurve("BasePole","bCrv","Base Curve",hs.HopsParamAccess.TREE)
-    ,hs.HopsCurve("MidPole","mCrv","Mid Curve",hs.HopsParamAccess.TREE)
-    ,hs.HopsCurve("TopPole","tCrv","Top Curve",hs.HopsParamAccess.TREE)
+    # ,hs.HopsCurve("BasePole","bCrv","Base Curve",hs.HopsParamAccess.LIST)
+    # ,hs.HopsCurve("MidPole","mCrv","Mid Curve",hs.HopsParamAccess.LIST)
+    # ,hs.HopsCurve("TopPole","tCrv","Top Curve",hs.HopsParamAccess.LIST)
     
     ]
 )
@@ -45,13 +45,13 @@ def createPoles(step,count,offset,period,shift,amplitude):
     topPoints = geo.createTopPoints(step,count,offset*3)
     # floorR = geo.createFloors(seriesPoints,radius)
 
-    basePole = rg.Line(basePoints,midPoints1)
-    midPole = rg.Line(midPoints1,midPoints2)
-    topPole = rg.Line(midPoints2,topPoints)
+    # basePole = rg.Line(basePoints,midPoints1)
+    # midPole = rg.Line(midPoints1,midPoints2)
+    # topPole = rg.Line(midPoints2,topPoints)
 
 
     # floor = rg.Circle(rg.Point3d(0,0,0),5)
-    return basePoints, midPoints1, midPoints2, topPoints,basePole,midPole,topPole
+    return basePoints, midPoints1, midPoints2, topPoints
 
 
 

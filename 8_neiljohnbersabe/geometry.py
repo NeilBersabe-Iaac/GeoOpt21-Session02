@@ -13,7 +13,8 @@ def createBasePoints(step,count):
         basePointsList.append(basePoints)
     
     return basePointsList
-
+# print(createBasePoints)
+# print(basePointsList)
 
 
 def createMidPoints1(step,count,offset,period,shift,amplitude):
