@@ -18,46 +18,53 @@ def createBasePoints(step,count):
 
 def createMidPoints1(step,count,offset,period,shift,amplitude):
     #Set the Start point
-    midPointsList = [(rg.Point3d(0,0,offset))]
+    midPointsList = [(rg.Point3d(0,np.sin(shift)*amplitude,offset))]
     xBp = 0
     yBp = 0
     for i in range(count):
         xBp += step
-        yBp = (np.sin((i*period)+shift))*amplitude
+        yBp = (np.sin(((i+step)*period)+shift))*amplitude
    
-        midPoints = rg.Point3d(xBp,yBp,offset)
-        midPointsList.append(midPoints)
+        midPoints1 = rg.Point3d(xBp,yBp,offset)
+        midPointsList.append(midPoints1)
     
     return midPointsList
 
 
-def createMidPoints2(step,count,offset):
+def createMidPoints2(step,count,offset,period,shift,amplitude):
     #Set the Start point
-    midPointsList2 = [(rg.Point3d(0,0,offset))]
+    midPointsList2 = [(rg.Point3d(0,np.sin(shift)*amplitude,offset))]
     xBp = 0
-   
+    yBp = 0
+
     for i in range(count):
         xBp += step
-   
-        midPoints2 = rg.Point3d(xBp,0,offset)
+        yBp = (np.sin(((i+step)*period)+shift))*amplitude
+
+        midPoints2 = rg.Point3d(xBp,yBp,offset)
         midPointsList2.append(midPoints2)
     
     return midPointsList2
 
 
-def createTopPoints(step,count,offset,period,shift,amplitude):
+def createTopPoints(step,count,offset):
     #Set the Start point
     topPointsList = [(rg.Point3d(0,0,offset))]
     xBp = 0
-    yBp = 0
+    
     for i in range(count):
-        xBp += stepx
-        yBp = (np.sin((i*period)+shift))*amplitude
-   
-        topPoints = rg.Point3d(xBp,yBp,offset)
+        xBp += step
+       
+        topPoints = rg.Point3d(xBp,0,offset)
         topPointsList.append(topPoints)
     
     return topPointsList
+
+# def createNodes(0000,)
+#     G = nx.Graph(G)
+
+#     nodes = []
+
 
 
 # def createFloors(Plane,Radius):

@@ -30,20 +30,28 @@ hops = hs.Hops(app)
     hs.HopsPoint("MidPoints1","M1","Mid Points 1",hs.HopsParamAccess.LIST),
     hs.HopsPoint("MidPoints2","M2","Mid Points 2",hs.HopsParamAccess.LIST),
     hs.HopsPoint("TopPoints","T","Top Points",hs.HopsParamAccess.LIST)
-    # ,hs.HopsCurve("Floors","F","Floor Curve",hs.HopsParamAccess.LIST)
+
+    ,hs.HopsCurve("BasePole","bCrv","Base Curve",hs.HopsParamAccess.TREE)
+    ,hs.HopsCurve("MidPole","mCrv","Mid Curve",hs.HopsParamAccess.TREE)
+    ,hs.HopsCurve("TopPole","tCrv","Top Curve",hs.HopsParamAccess.TREE)
     
     ]
 )
-def createBuilding(step,count,offset,period,shift,amplitude):
+def createPoles(step,count,offset,period,shift,amplitude):
     #Set the Start point
     basePoints = geo.createBasePoints(step,count)
     midPoints1 = geo.createMidPoints1(step,count,offset,period,shift,amplitude)
-    midPoints2 = geo.createMidPoints2(step,count,offset*2,)
-    topPoints = geo.createTopPoints(step,count,offset*3,period,shift+3,amplitude)
+    midPoints2 = geo.createMidPoints2(step,count,offset*2,period,shift+3,amplitude)
+    topPoints = geo.createTopPoints(step,count,offset*3)
     # floorR = geo.createFloors(seriesPoints,radius)
 
+    basePole = rg.Line(basePoints,midPoints1)
+    midPole = rg.Line(midPoints1,midPoints2)
+    topPole = rg.Line(midPoints2,topPoints)
+
+
     # floor = rg.Circle(rg.Point3d(0,0,0),5)
-    return basePoints, midPoints1, midPoints2, topPoints
+    return basePoints, midPoints1, midPoints2, topPoints,basePole,midPole,topPole
 
 
 
