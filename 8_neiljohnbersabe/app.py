@@ -52,8 +52,13 @@ def createPoles(step,count,offset,period,shift,amplitude):
 
     # floor = rg.Circle(rg.Point3d(0,0,0),5)
     return basePoints, midPoints1, midPoints2, topPoints
-
-
+    
+#####
+#IM STUMPPED--!!__ by Neil John Bersabe XD
+####
+# I need to create a tree data structure that holds the 4 lists separately and map each index to one another to create edges from them
+#ex. [[1a,2a,3a,4a],[1b,2b,3b,4b],[1c,2c,3c,4c],[1d,2d,3c,4c]]
+#something like this then i need to map each index and create edges like edge[1a][1b],edge[2a],[2b]
 
 
 if __name__== "__main__":

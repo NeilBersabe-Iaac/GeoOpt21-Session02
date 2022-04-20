@@ -2,6 +2,7 @@ import rhino3dm as rg
 import networkx as nx
 import numpy as np
 
+#This is the list of Points for the Base
 def createBasePoints(step,count):
     #Set the Start point
     basePointsList = [(rg.Point3d(0,0,0))]
@@ -17,6 +18,7 @@ def createBasePoints(step,count):
 # print(basePointsList)
 
 
+#This is the list of Points for the first Middle thirds
 def createMidPoints1(step,count,offset,period,shift,amplitude):
     #Set the Start point
     midPointsList = [(rg.Point3d(0,np.sin(shift)*amplitude,offset))]
@@ -32,6 +34,7 @@ def createMidPoints1(step,count,offset,period,shift,amplitude):
     return midPointsList
 
 
+#This is the list of Points for the second Middle thirds
 def createMidPoints2(step,count,offset,period,shift,amplitude):
     #Set the Start point
     midPointsList2 = [(rg.Point3d(0,np.sin(shift)*amplitude,offset))]
@@ -48,6 +51,7 @@ def createMidPoints2(step,count,offset,period,shift,amplitude):
     return midPointsList2
 
 
+#This is the list of Points for the Top Points
 def createTopPoints(step,count,offset):
     #Set the Start point
     topPointsList = [(rg.Point3d(0,0,offset))]
@@ -60,6 +64,13 @@ def createTopPoints(step,count,offset):
         topPointsList.append(topPoints)
     
     return topPointsList
+
+
+#IM STUMPPED!!
+# I need to create a tree data structure that holds the 4 lists separately and map each index to one another to create edges from them
+#ex. [[1a,2a,3a,4a],[1b,2b,3b,4b],[1c,2c,3c,4c],[1d,2d,3c,4c]]
+#something like this then i need to map each index and create edges like edge[1a][1b],edge[2a],[2b]
+
 
 # def createNodes(0000,)
 #     G = nx.Graph(G)
