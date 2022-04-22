@@ -1,8 +1,10 @@
+from tkinter.tix import Tree
 from flask import Flask
 import ghhops_server as hs
 import rhino3dm as rg
 import geometry as geo
 import numpy as np
+# import pandas as pd
 
 app = Flask(__name__)
 hops = hs.Hops(app)
@@ -30,6 +32,7 @@ hops = hs.Hops(app)
     hs.HopsPoint("MidPoints1","M1","Mid Points 1",hs.HopsParamAccess.LIST),
     hs.HopsPoint("MidPoints2","M2","Mid Points 2",hs.HopsParamAccess.LIST),
     hs.HopsPoint("TopPoints","T","Top Points",hs.HopsParamAccess.LIST)
+    ,hs.HopsPoint("PointsList","000","Combined Clean Tree",hs.HopsParamAccess.TREE)
 
     # ,hs.HopsCurve("BasePole","bCrv","Base Curve",hs.HopsParamAccess.LIST)
     # ,hs.HopsCurve("MidPole","mCrv","Mid Curve",hs.HopsParamAccess.LIST)
@@ -43,6 +46,7 @@ def createPoles(step,count,offset,period,shift,amplitude):
     midPoints1 = geo.createMidPoints1(step,count,offset,period,shift,amplitude)
     midPoints2 = geo.createMidPoints2(step,count,offset*2,period,shift+3,amplitude)
     topPoints = geo.createTopPoints(step,count,offset*3)
+    pointsTree = basePoints+midPoints1+midPoints2+topPoints
     # floorR = geo.createFloors(seriesPoints,radius)
 
     # basePole = rg.Line(basePoints,midPoints1)
@@ -51,7 +55,8 @@ def createPoles(step,count,offset,period,shift,amplitude):
 
 
     # floor = rg.Circle(rg.Point3d(0,0,0),5)
-    return basePoints, midPoints1, midPoints2, topPoints
+    return basePoints, midPoints1, midPoints2, topPoints, pointsTree
+    print(pointsTree)
 
 #####
 #IM STUMPPED--!!__ by Neil John Bersabe XD

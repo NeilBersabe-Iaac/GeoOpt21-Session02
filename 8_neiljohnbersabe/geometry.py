@@ -2,6 +2,11 @@ import rhino3dm as rg
 import networkx as nx
 import numpy as np
 
+
+
+
+#########These Functions are similar to the series component of grasshopper
+#########################################################################
 #This is the list of Points for the Base
 def createBasePoints(step,count):
     #Set the Start point
@@ -17,11 +22,10 @@ def createBasePoints(step,count):
 # print(createBasePoints)
 # print(basePointsList)
 
-
 #This is the list of Points for the first Middle thirds
 def createMidPoints1(step,count,offset,period,shift,amplitude):
     #Set the Start point
-    midPointsList = [(rg.Point3d(0,np.sin(shift)*amplitude,offset))]
+    midPointsList1 = [(rg.Point3d(0,np.sin(shift)*amplitude,offset))]
     xBp = 0
     yBp = 0
     for i in range(count):
@@ -29,9 +33,9 @@ def createMidPoints1(step,count,offset,period,shift,amplitude):
         yBp = (np.sin(((i+step)*period)+shift))*amplitude
    
         midPoints1 = rg.Point3d(xBp,yBp,offset)
-        midPointsList.append(midPoints1)
+        midPointsList1.append(midPoints1)
     
-    return midPointsList
+    return midPointsList1
 
 
 #This is the list of Points for the second Middle thirds
@@ -64,6 +68,7 @@ def createTopPoints(step,count,offset):
         topPointsList.append(topPoints)
     
     return topPointsList
+#########################################################################
 
 
 #IM STUMPPED!!
